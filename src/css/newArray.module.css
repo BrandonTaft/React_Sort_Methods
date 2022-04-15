@@ -1,0 +1,27 @@
+body{
+    background-color: darkslategray;
+    padding: 2%;
+}
+
+button{
+    background-color: transparent;
+}
+
+.bar{
+    background-color: greenyellow;
+    margin-bottom: 1%;
+    font-size: x-large;
+}
+
+.container{
+    margin-top: 10%;
+}
+
+.method{
+    background-color: black;
+    height: 200px;
+    width: 100%;
+    margin-top: 5%;
+    border: solid gray;
+    color:antiquewhite
+}
