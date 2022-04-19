@@ -11,18 +11,20 @@ function NewArray() {
 
     const [newArray, setNewArray] = useState([]);
     const [method, setMethod] = useState([])
-    const [caption, setCaption] = useState([]);
-    // const bubble = 'let bubbleSort = (inputArr) => {let len = inputArr.length;let checked;do {checked = false;for (let i = 0; i < len; i++) {if (inputArr[i] > inputArr[i + 1]) {let tmp = inputArr[i];inputArr[i] = inputArr[i + 1];inputArr[i + 1] = tmp;checked = true;}}} while (checked);return inputArr;};'
+    const [captionOne, setCaptionOne] = useState([]);
+    const [captionTwo, setCaptionTwo] = useState([]);
+    
 
     useEffect(() => {
         getNewArray();
+        setMethod("WELCOME")
     }, [])
 
 
     const getNewArray = () => {
         const max = 10;
         const arr = [];
-
+        
         for (let i = 0; i < max;) {
             let num = Math.floor(Math.random() * max + 1)
             while (arr.includes(num) === false) {
@@ -49,7 +51,7 @@ function NewArray() {
             for (let i = 0; i < len; i++) {
                 //The element we are testing turns red
                 document.getElementById(i).style.backgroundColor = "red";
-                document.getElementById(i).innerText = "arr[i]";
+                document.getElementById("caption").innerText = "arr[i]";
                 await new Promise(resolve => setTimeout(resolve, 1000));
                 if (arr[i] > arr[i + 1]) {
                     document.getElementById(i + 1).style.backgroundColor = "blue";
@@ -72,9 +74,10 @@ function NewArray() {
     }
 
     const bubble = () => {
+        setTimeout(() => Prism.highlightAll(), 0)
         return (
             <pre>
-                <code>
+                <code className="language-javascript">
                 {`let bubbleSort = (inputArr) => {
     let len = inputArr.length;
     let checked;
@@ -99,11 +102,12 @@ function NewArray() {
 
 const display = newArray.map((bar, index) => {
     return (
-        <div key={index}>
-            <span id="caption"></span>
+        <div className={style.row} key={index}>
+           
             <div className={style.bar} id={`${index}`} style={{ width: `${bar * 8}%`, height: `${bar * 8}%` }}>
                 {bar}
             </div>
+            <span id="caption"></span>
         </div>
     )
 });
