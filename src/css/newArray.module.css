@@ -14,7 +14,16 @@ button{
 }
 
 .container{
+    display: flex;
     margin-top: 10%;
+}
+
+.leftDisplay{
+    width: 75%;
+}
+
+.rightDisplay{
+    width: 25%;
 }
 
 .method{
