@@ -13,7 +13,7 @@ function NewArray() {
     const [method, setMethod] = useState([]);
     const [text, setText] = useState([]);
     const [bottomText, setBottomText] = useState([]);
-    const [captionTwo, setCaptionTwo] = useState([]);
+    const [line, setLine] = useState([]);
 
 
     useEffect(() => {
@@ -36,6 +36,7 @@ function NewArray() {
             }
         }
         setNewArray(arr)
+        
     }
 
 
@@ -45,16 +46,13 @@ function NewArray() {
         setMethod(bubble)
         await new Promise(resolve => setTimeout(resolve, 1000));
         const arr = newArray;
-        const len = arr.length;
         const caption = document.getElementById('caption')
         let checked;
 
         do {
 
             checked = false
-            for (let i = 0; i < len; i++) {
-                setText("");
-                setBottomText("");
+            for (let i = 0; i < arr.length; i++) {
                 //The element we are testing turns red
                 document.getElementById(i).style.backgroundColor = "red";
                 if (document.getElementById(i + 1) !== null) {
@@ -64,23 +62,24 @@ function NewArray() {
 
 
                 if (arr[i] > arr[i + 1]) {
+                    setLine("6")
                     await new Promise(resolve => setTimeout(resolve, 1000));
-                    setText("If arr[i] is greater then arr[i + 1]")
+                    setText("If arr[i] is greater than arr[i + 1]")
                     await new Promise(resolve => setTimeout(resolve, 1000));
                     //Swap the elements in the array since element is less than the next element
                     let tmp = arr[i];
                     arr[i] = arr[i + 1];
                     arr[i + 1] = tmp;
                     await new Promise(resolve => setTimeout(resolve, 1000));
-                    setBottomText("They Swap Positions")
+                    setBottomText("They swap positions, then the loop continues")
                     await new Promise(resolve => setTimeout(resolve, 1000));
                     //Is only changed to true when there is a swap made
                     checked = true
                 }else{
                     await new Promise(resolve => setTimeout(resolve, 1000));
-                    setText("If arr[i] is less then arr[i + 1]");
+                    setText("If arr[i] is less than arr[i + 1]");
                     await new Promise(resolve => setTimeout(resolve, 1000));
-                    setBottomText("They stay where they are and the loop moves on");
+                    setBottomText("They stay where they are and the loop continues");
                     await new Promise(resolve => setTimeout(resolve, 1000));
                 }
                 document.getElementById(i).style.backgroundColor = "greenyellow";
@@ -98,24 +97,26 @@ function NewArray() {
 
     const bubble = () => {
         setTimeout(() => Prism.highlightAll(), 0)
+        console.log(newArray)
         return (
             <pre>
+                <div className={style.newArray}>let arr = [{newArray.toString()}]</div>
                 <code className="language-javascript">
-                    {`let bubbleSort = (inputArr) => {
-    let len = inputArr.length;
+                    {`let bubbleSort = (arr) => {
+
     let checked;
     do {
         checked = false;
-        for (let i = 0; i < len; i++) {
-            if (inputArr[i] > inputArr[i + 1]) {
-                let tmp = inputArr[i];
-                inputArr[i] = inputArr[i + 1];
-                inputArr[i + 1] = tmp;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] > arr[i + 1]) {
+                let tmp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = tmp;
                 checked = true;
             }
         }
     } while (checked);
-    return inputArr;
+    return arr;
 };`}
 
                 </code>
@@ -145,13 +146,14 @@ function NewArray() {
             <button onClick={getNewArray} > Get New Array </button>
             <button onClick={bubbleSort} > Bubble Sort </button>
             <div className={style.method}>
+                
                 {method}
             </div>
             <div className={style.container}>
                 <div className={style.leftDisplay}>{display}</div>
                 <div className={style.rightDisplay}>
-                    {text}
-                    {bottomText}
+                    <p className={style.text}>{text}</p>
+                    <p className={style.bottomText}>{bottomText}</p>
                 </div>
             </div>
         </div>

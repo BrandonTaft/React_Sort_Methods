@@ -26,6 +26,12 @@ button{
     width: 25%;
 }
 
+.newArray{
+    display: flex;
+    color: orange;
+    margin-bottom: 1em;
+}
+
 .method{
     background-color: black;
     width: 100%;
@@ -40,4 +46,18 @@ code{
 
 .row{
     display: flex;
+}
+
+
+.text{
+    font-size: 2em;
+    color: red;
+    margin: 0;
+    margin-bottom: 1em;
+}
+
+.bottomText{
+    font-size: 2em;
+    color: greenyellow;
+    margin: 0;
 }
