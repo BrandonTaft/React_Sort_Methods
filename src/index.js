@@ -1,19 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {BrowserRouter , Route, Routes} from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
-import App from './App';
+import BaseLayout from './components/BaseLayout';
 import BubbleSort from './components/BubbleSort';
-import NewArray from './components/NewArray';
+import QuickSort from './components/QuickSort';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-     <BrowserRouter >
-      <Routes>
-     <Route path="/" element={<NewArray />} />
-     <Route path="/bubble" element={<BubbleSort />} />
-     </Routes>
+    <BrowserRouter >
+      <BaseLayout>
+     
+        <Routes>
+          
+        {/* <Route path="/" element={<App />} /> */}
+          <Route path="/" element={<BubbleSort />} />
+          <Route path="/quick" element={<QuickSort />} />
+        </Routes>
+      </BaseLayout>
     </BrowserRouter>
   </React.StrictMode>
 );

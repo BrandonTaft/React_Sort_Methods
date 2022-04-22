@@ -51,17 +51,17 @@ function BubbleSort(props) {
     //     bubbleSort();
     // }, [])
 
-    const bars = props.arr.map(bar => {
-        return(
-        <div>{bar}</div>
-        )
+    // const bars = props.arr.map(bar => {
+    //     return(
+    //     <div>{bar}</div>
+    //     )
 
-    })
+  //  })
 
 
     return (
         <div>
-            {bars}
+            heyyyyyyyy
         </div>
     )
 }
