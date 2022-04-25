@@ -6,22 +6,17 @@ import "../prism/prism.css";
 
 
 
-function Navbar() {
 
-    const [method, setMethod] = useState([])
-
-    // const bubble = () => {
-    //     setMethod("yoyoyoyo")
-    //  }
-
+function Method(props) {
     const bubble = () => {
         setTimeout(() => Prism.highlightAll(), 0)
-
+        
         return (
             <pre>
-
+              
                 <code className="language-javascript">
                     {`let bubbleSort = (arr) => {
+
     let checked;
     do {
         checked = false;
@@ -42,22 +37,12 @@ function Navbar() {
         )
     }
 
-
     return (
-        <div>
-            <div className={style.method}>
-
-                {method}
-            </div>
-
-            <div>
-                <button onClick={() => { setMethod(bubble) }}> <Link to="/bubble">Bubble</Link> </button>
-                <button > <Link to="/quick">Quick</Link> </button>
-            </div>
-
+        <div className={style.method}>
+            {props.method}
+          
         </div>
     )
-
 }
 
-export default Navbar
+export default Method

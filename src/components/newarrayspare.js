@@ -1,25 +1,51 @@
 import React, { useState, useEffect } from 'react';
-import Method from './Method';
+import { Link } from 'react-router-dom';
+import style from "../css/newArray.module.css";
 import Prism from "prismjs";
 import "../prism/prism.css";
 
 
-function BubbleSort(props) {
-
-    // const [text, setText] = useState([]);
-    // const [textTwo, setTextTwo] = useState([]);
-    // const [bottomText, setBottomText] = useState([]);
-    // const [bottomTextTwo, setBottomTextTwo] = useState([])
-    // const [newArray, setNewArray] = useState([]);
-    //const [methods, setMethods] = useState([]);
-    // import 
 
 
-     
-    // //*************** PERFORM BUBBLE SORT **************** */
+
+function NewArray() {
+
+    const [newArray, setNewArray] = useState([]);
+    const [method, setMethod] = useState([]);
+    const [text, setText] = useState([]);
+    const [textTwo, setTextTwo] = useState([]);
+    const [bottomText, setBottomText] = useState([]);
+    const [bottomTextTwo, setBottomTextTwo] = useState([])
+
+
+    useEffect(() => {
+        getNewArray();
+        setMethod("WELCOME")
+    }, [])
+
+
+    //****************** NEW ARRAY ********************* */
+
+    const getNewArray = () => {
+        const max = 10;
+        const arr = [];
+
+        for (let i = 0; i < max;) {
+            let num = Math.floor(Math.random() * max + 1)
+            while (arr.includes(num) === false) {
+                arr.push(num)
+                i++
+            }
+        }
+        setNewArray(arr)
+        
+    }
+
+
+    //*************** PERFORM BUBBLE SORT **************** */
 
     // async function bubbleSort() {
-    //     //setMethod(bubble)
+    //     setMethod(bubble)
     //     await new Promise(resolve => setTimeout(resolve, 3000));
     //     const arr = newArray;
     //     let checked;
@@ -80,12 +106,74 @@ function BubbleSort(props) {
     //     } while (checked)
     // }
 
+    const bubble = () => {
+        setTimeout(() => Prism.highlightAll(), 0)
+        console.log(newArray)
+        return (
+            <pre>
+                <div className={style.newArray}>let arr = [{newArray.toString()}]</div>
+                <code className="language-javascript">
+                    {`let bubbleSort = (arr) => {
+
+    let checked;
+    do {
+        checked = false;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] > arr[i + 1]) {
+                let tmp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = tmp;
+                checked = true;
+            }
+        }
+    } while (checked);
+    return arr;
+};`}
+
+                </code>
+            </pre >
+        )
+    }
+
+
+
+    //**************************************************************************************** */
+
+    const display = newArray.map((bar, index) => {
+        return (
+            <div className={style.row} key={index}>
+
+                <div className={style.bar} id={`${index}`} style={{ width: `${bar * 8}%`, height: `${bar * 8}%` }}>
+                    {bar}
+                </div>
+                <span id={`caption${index}`}></span>
+            </div>
+        )
+    });
+
 
     return (
         <div>
             
+            <div className={style.method}>
+                
+                {method}
+            </div>
+            <div className={style.container}>
+
+                <div className={style.leftDisplay}>
+                <div className={style.newArray}>let arr = [{newArray.toString()}]</div>
+                    {display}
+                    </div>
+                <div className={style.rightDisplay}>
+                    <p className={style.text}>{text}</p>
+                    <p className={style.textTwo}>{textTwo}</p>
+                    <p className={style.bottomText}>{bottomText}</p>
+                    <p className={style.bottomTextTwo}>{bottomTextTwo}</p>
+                </div>
+            </div>
         </div>
     )
 }
 
-export default BubbleSort
+export default NewArray

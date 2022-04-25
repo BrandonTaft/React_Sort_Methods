@@ -1,14 +1,14 @@
-function App() {
+import Method from "./Method";
 
-
+function QuickSort() {
 
     return (
         <div>
-      yooooooooooo
+      {/* <Method method = {"quick sort"} /> */}
       </div>
    
     );
   }
   
-  export default App;
+  export default QuickSort;
   

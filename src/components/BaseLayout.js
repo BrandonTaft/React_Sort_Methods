@@ -5,8 +5,9 @@ function BaseLayout(props) {
   return (
     <div>
       <Navbar />
-      <NewArray />
+      
       {props.children}
+      <NewArray />
     </div>
   )
 }
