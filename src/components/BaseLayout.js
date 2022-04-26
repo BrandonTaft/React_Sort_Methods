@@ -7,7 +7,7 @@ function BaseLayout(props) {
       <Navbar />
       
       {props.children}
-      <NewArray />
+      {/* <NewArray /> */}
     </div>
   )
 }
