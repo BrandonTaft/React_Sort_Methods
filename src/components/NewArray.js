@@ -105,10 +105,6 @@ function NewArray() {
         } while (checked)
     }
 
-    
-
-
-
     //**************************************************************************************** */
 
     const display = newArray.map((bar, index) => {
