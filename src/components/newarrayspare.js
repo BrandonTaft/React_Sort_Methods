@@ -13,8 +13,7 @@ function NewArray() {
     const [newArray, setNewArray] = useState([]);
     const [method, setMethod] = useState([]);
     const [text, setText] = useState([]);
-    const [textTwo, setTextTwo] = useState([]);
-    const [bottomText, setBottomText] = useState([]);
+    
     const [bottomTextTwo, setBottomTextTwo] = useState([])
 
 
